@@ -56,6 +56,6 @@ fetch('https://crm.pingfrontend.com' + window.location.pathname + window.locatio
 Maybe both of these can be done in the same request, as the Routes can be included in the Inertia Request, since ideally there won't be that many routes for your project.
 
 Here is an exampoe of a route, since the pages are loaded locally from the SPA, if the name doesn't match what ever is defaulted you'll have to send it as a query parameter:
-```
+```vue
 <Link :href="route('index', { component: 'Welcome' })">Welcome Page</Link>
 ```

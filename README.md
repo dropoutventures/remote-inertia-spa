@@ -26,7 +26,7 @@ Route::any('/', function(Request $request) {
 
 # SPA Setup
 All of this is already done for you inside the main.js file, but here it is again anyways...
-1) For this project I used (Vite Vue3 Tailwind Starterkit)[https://github.com/web2033/vite-vue3-tailwind-starter], which was pretty awesome and provides everything I'd already want in my project.
+1) For this project I used [Vite Vue3 Tailwind Starterkit](https://github.com/web2033/vite-vue3-tailwind-starter), which was pretty awesome and provides everything I'd already want in my project.
 2) You'll need to install Ziggy: `npm install ziggy-js` and add it to your project:
 ```js
 import route from 'ziggy-js'

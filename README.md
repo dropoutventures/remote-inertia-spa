@@ -22,10 +22,14 @@ public function version(Request $request) {
 We do this because the local version and remote version won't match and will cause issues.
 5) In `/config/cors.php` we have to allow CORS on all paths, because we are using the same routes as the frontend, and expose the `X-Inertia` header:
 ```diff
+return [
 -  'paths' => [ 'api/*', 'sanctum/csrf-cookie' ],
 +  'paths' => [ '*', 'api/*', 'sanctum/csrf-cookie' ],
+    ...
 -  'exposed_headers' => [],
 +  'exposed_headers' => [ 'X-Inertia' ],
+    ...
+];
 ```
 6) Now the main way to make this work is to make a subdomain on the same domain as the SPA so there is no issue with 3rd-party cookies, so we would do `pingfrontend.com` for the SPA and `crm.pingfrontend.com` as a domain alias for the `pingcrm.com` Laravel server. You can do this in your nginx `server_name` setting by setting it to `_`.
 

@@ -13,9 +13,10 @@ Route::get('routes', fn () => response()->json(new Ziggy));
 ```
 Probably we should add something to [limit which routes are sent](https://github.com/tighten/ziggy#filtering-routes).
 4) In `app/Http/Middleware/HandleInertiaRequests.php` we must disable the Inertia Version that is included in the response:
-```php
+```diff
 public function version(Request $request) {
-  return null; // parent::version($request);
+-  return parent::version($request);
++  return null;
 }
 ```
 We do this because the local version and remote version won't match and will cause issues.

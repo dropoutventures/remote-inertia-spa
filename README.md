@@ -29,6 +29,8 @@ return [
 -  'exposed_headers' => [],
 +  'exposed_headers' => [ 'X-Inertia' ],
     ...
+-   'supports_credentials' => false,
++   'supports_credentials' => true,
 ];
 ```
 6) Now the main way to make this work is to make a subdomain on the same domain as the SPA so there is no issue with 3rd-party cookies, so we would do `pingfrontend.com` for the SPA and `crm.pingfrontend.com` as a domain alias for the `pingcrm.com` Laravel server. You can do this in your nginx `server_name` setting by setting it to `_`.

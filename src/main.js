@@ -5,14 +5,14 @@ import axios from 'axios'
 axios.defaults.withCredentials = true;
 
 import route from 'ziggy-js';
-const ZiggyRoutes = await fetch('https://pingcrm.test/api/routes').then(x => x.json());
+const ZiggyRoutes = await fetch('https://crm.remote-inertia-spa.test/api/routes').then(x => x.json());
 const ZiggyRouter = (name, params) => route(name, params, true, ZiggyRoutes);
 
 console.log('Routes', ZiggyRoutes);
 
 import './tailwind.css'
 
-fetch('https://pingcrm.test' + window.location.pathname + window.location.search, {
+fetch('https://crm.remote-inertia-spa.test' + window.location.pathname + window.location.search, {
   mode: "cors",
   credentials: "include",
   headers: {

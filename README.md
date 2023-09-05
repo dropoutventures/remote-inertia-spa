@@ -12,14 +12,12 @@ Maybe this idea is completely stupid, but it seems to be working ... so here is 
 Route::get('routes', fn () => response()->json(new Ziggy));
 ```
 Probably we should add something to [limit which routes are sent](https://github.com/tighten/ziggy#filtering-routes).
-4) In `app/Http/Middleware/HandleInertiaRequests.php` we must disable the Inertia Version that is included in the response:
-```diff
-public function version(Request $request) {
--  return parent::version($request);
-+  return null;
-}
-```
-We do this because the local version and remote version won't match and will cause issues.
+
+4) ~~In `app/Http/Middleware/HandleInertiaRequests.php` we must disable the Inertia Version that is included in the response:~~
+~~Replace `parent::version($request)` with `null` in the `version` method.~~
+~~We do this because the local version and remote version won't match and will cause issues.~~
+The `X-Inertia-Version` is checked first against the md5 hash of `ASSET_URL` from the env file. You should set this to the frontend domain.
+
 5) In `/config/cors.php` we have to allow CORS on all paths, because we are using the same routes as the frontend, and expose the `X-Inertia` header:
 ```diff
 return [

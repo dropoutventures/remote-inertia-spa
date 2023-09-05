@@ -1,8 +1,9 @@
 import { createApp, h } from 'vue';
-import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import { createInertiaApp } from '@inertiajs/inertia-vue3';
 
-import axios from 'axios'
+import axios from 'axios';
 axios.defaults.withCredentials = true;
+import md5 from 'crypto-js/md5';
 
 import route from 'ziggy-js';
 const ZiggyRoutes = await fetch('https://crm.remote-inertia-spa.test/api/routes').then(x => x.json());
@@ -18,6 +19,7 @@ fetch('https://crm.remote-inertia-spa.test' + window.location.pathname + window.
   headers: {
     'Content-Type': 'application/json',
     'X-Inertia': true,
+    'X-Inertia-Version': md5(window.location.origin).toString(),
   }
 })
   .then(response => response.json())
